@@ -14,11 +14,9 @@
         <module>Streams</module>
         <module>Collections</module>
         <module>IO</module>
-        <module>JavaChallengers</module>
         <module>DataStructure</module>
         <module>Strings</module>
         <module>JDBC</module>
-        <module>JavaMagazine</module>
     </modules>
 
     <properties>
