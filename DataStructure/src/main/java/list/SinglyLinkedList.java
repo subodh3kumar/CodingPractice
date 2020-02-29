@@ -1,5 +1,7 @@
 package list;
 
+import java.util.LinkedList;
+
 public class SinglyLinkedList<E> {
 
     private Node<E> head = null;
@@ -40,6 +42,14 @@ public class SinglyLinkedList<E> {
     }
 
     public void addLast(E e) {
+        linkLast(e);
+    }
+
+    public void add(E e) {
+        linkLast(e);
+    }
+
+    private void linkLast(E e) {
         Node<E> newest = new Node<>(e, null);
         if (isEmpty()) {
             head = newest;
@@ -48,6 +58,24 @@ public class SinglyLinkedList<E> {
         }
         tail = newest;
         size++;
+    }
+
+    public String display() {
+        Node<E> current = head;
+        StringBuilder sb = new StringBuilder();
+        if (current == null) {
+            sb.append("[]");
+            return sb.toString();
+        }
+        sb.append("[");
+        while (current != null) {
+            sb.append(current.getElement());
+            sb.append(", ");
+            current = current.next;
+        }
+        sb.append("]");
+        String result = sb.toString().replace(", ]", "]");
+        return result;
     }
 
     public E removeFirst() {

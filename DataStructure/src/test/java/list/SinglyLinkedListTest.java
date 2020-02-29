@@ -1,21 +1,22 @@
 package list;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SinglyLinkedListTest {
+
     private SinglyLinkedList<String> linkedList;
 
-    @BeforeAll
+    @BeforeEach
     public void init() {
         linkedList = new SinglyLinkedList<>();
     }
 
     @Test
+    @DisplayName("test addFirst()")
     public void testAddFirst() {
         linkedList.addFirst("subodh");
         linkedList.addFirst("juli");
@@ -23,9 +24,27 @@ class SinglyLinkedListTest {
     }
 
     @Test
+    @DisplayName("test addLast()")
     public void testAddLast() {
-    linkedList.addLast("kumar");
-    linkedList.addLast("kumari");
-    assertEquals("kumari", linkedList.getLast());
+        linkedList.addLast("kumar");
+        linkedList.addLast("kumari");
+        assertEquals("kumari", linkedList.getLast());
+    }
+
+    @Test
+    @DisplayName("test add()")
+    public void testAdd() {
+        linkedList.add("subodh");
+        linkedList.add("kumar");
+        linkedList.add("juli");
+        assertEquals(3, linkedList.size());
+    }
+
+    @Test
+    @DisplayName("test display()")
+    public void testDisplay() {
+        linkedList.add("subodh");
+        linkedList.add("juli");
+        assertEquals("[subodh, juli]", linkedList.display());
     }
 }
