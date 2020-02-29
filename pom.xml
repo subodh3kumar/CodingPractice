@@ -17,6 +17,7 @@
         <module>DataStructure</module>
         <module>Strings</module>
         <module>JDBC</module>
+        <module>DesignPattern</module>
     </modules>
 
     <properties>
