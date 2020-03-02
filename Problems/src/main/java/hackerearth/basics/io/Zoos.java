@@ -7,9 +7,35 @@ import java.util.Scanner;
 public class Zoos {
 
     public static void main(String[] args) {
-        String word = getInput();
+        String word = getInput().toLowerCase();
+        String mapAnswer = withMap(word);
+        String arrayAnswer = withArray(word);
+
+        System.out.println(mapAnswer);
+        System.out.println(arrayAnswer);
+    }
+
+    private static String withArray(String word) {
+
+        return word;
+    }
+
+    private static String withMap(String word) {
         Map<Character, Integer> map = getCharCounts(word);
-        System.out.println(map);
+        return verifyCharCount(map);
+    }
+
+    private static String verifyCharCount(Map<Character, Integer> map) {
+        int zCount = 0;
+        int oCount = 0;
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getKey().equals('z')) {
+                zCount = map.get('z');
+            } else {
+                oCount = map.get('o');
+            }
+        }
+        return (2 * zCount == oCount) ? "Yes" : "No";
     }
 
     private static String getInput() {
