@@ -45,6 +45,8 @@ class SinglyLinkedListTest {
     public void testDisplay() {
         linkedList.add("subodh");
         linkedList.add("juli");
-        assertEquals("[subodh, juli]", linkedList.display());
+        linkedList.add("devi");
+        linkedList.add("kumar");
+        assertEquals("[subodh, juli, devi, kumar]", linkedList.display());
     }
 }

@@ -62,11 +62,10 @@ public class SinglyLinkedList<E> {
 
     public String display() {
         Node<E> current = head;
-        StringBuilder sb = new StringBuilder();
-        if (current == null) {
-            sb.append("[]");
-            return sb.toString();
+        if (isEmpty()) {
+            return "[]";
         }
+        StringBuilder sb = new StringBuilder();
         sb.append("[");
         while (current != null) {
             sb.append(current.getElement());
