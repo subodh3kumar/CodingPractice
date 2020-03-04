@@ -8,16 +8,24 @@ public class Zoos {
 
     public static void main(String[] args) {
         String word = getInput().toLowerCase();
-        String mapAnswer = withMap(word);
-        String arrayAnswer = withArray(word);
-
-        System.out.println(mapAnswer);
-        System.out.println(arrayAnswer);
+        //String answer = withMap(word);
+        String answer = withArray(word);
+        System.out.println(answer);
     }
 
     private static String withArray(String word) {
+        char[] chars = word.toCharArray();
+        int zCount = 0;
+        int oCount = 0;
 
-        return word;
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == 'z') {
+                zCount++;
+            } else {
+                oCount++;
+            }
+        }
+        return (2 * zCount == oCount) ? "Yes" : "No";
     }
 
     private static String withMap(String word) {
