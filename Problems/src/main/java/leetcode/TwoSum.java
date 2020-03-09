@@ -8,17 +8,17 @@ public class TwoSum {
 
     public static void main(String[] args) throws Exception {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            int[] nums = {2, 7, 11, 15, 6, 9, 15, 4, 3};
+            int[] array = {2, 7, 11, 15, 6, 9, 15, 4, 3};
             int target = Integer.parseInt(reader.readLine());
-            int[] index = twoSum(nums, target);
+            int[] index = twoSum(array, target);
             System.out.println(Arrays.toString(index));
         }
     }
 
-    private static int[] twoSum(int[] nums, int target) {
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[i] + nums[j] == target) {
+    private static int[] twoSum(int[] array, int target) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] + array[j] == target) {
                     return new int[]{i, j};
                 }
             }

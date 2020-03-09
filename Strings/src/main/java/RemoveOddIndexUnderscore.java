@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class RemoveOddIndexUnderscore {
 
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
         System.out.print("Enter a string: ");
         String word = input.next();
