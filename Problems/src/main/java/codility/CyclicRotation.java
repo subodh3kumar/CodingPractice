@@ -1,5 +1,8 @@
 package codility;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  * An array A consisting of N integers is given. Rotation of the array means that each element
  * is shifted right by one index, and the last element of the array is moved to the first place.
@@ -9,13 +12,26 @@ package codility;
 public class CyclicRotation {
 
     public static void main(String[] args) {
-        int[] array = {};
-        int num = 0;
+        Scanner input = new Scanner(System.in);
+        String str = input.nextLine();
+        int num = input.nextInt();
+        input.close();
+        String[] strings = str.split(" ");
+        int[] array = new int[strings.length];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = Integer.parseInt(strings[i]);
+        }
         int[] result = solution(array, num);
+        System.out.println(Arrays.toString(result));
     }
 
     private static int[] solution(int[] array, int num) {
-
-        return array;
+        int size = array.length;
+        int[] result = new int[size];
+        for (int i = 0; i < size; i++) {
+            int remainder = (i + num) % size;
+            result[remainder] = array[i];
+        }
+        return result;
     }
 }
