@@ -1,28 +1,44 @@
 package codility;
+/**
+ * A binary gap within a positive integer N is any maximal sequence of consecutive zeros
+ * that is surrounded by ones at both ends in the binary representation of N.
+ */
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class BinaryGap {
 
     public static void main(String[] args) throws Exception {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-            int num = Integer.parseInt(reader.readLine());
-            String binary = Integer.toBinaryString(num);
 
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            int num = Integer.parseInt(reader.readLine());
+            int result = solution(num);
+            System.out.println(result);
+        }
+    }
+
+    private static int solution(int num) {
+        String binary = Integer.toBinaryString(num);
+
+        int first = binary.indexOf('1');
+        int last = binary.lastIndexOf('1');
+
+        int result = 0;
+
+        if (last > first) {
+            binary = binary.substring(first, last + 1);
             String[] array = binary.split("1", -1);
-            System.out.println(binary);
-            System.out.println(binary.length());
-            System.out.println(binary.indexOf('1'));
-            System.out.println(binary.lastIndexOf('1'));
-            System.out.println(array.length + "-" + Arrays.toString(array));
-            int size = array.length;
-            for (int i = 0; i < size; i++) {
-                if (array[i].equals("") && array[size-1].equals("")) {
-                    System.out.println(array[i]);
+
+            for (int i = 0; i < array.length; i++) {
+                if (array[i].length() > 0) {
+                    int count = array[i].length();
+                    if (count > result) {
+                        result = count;
+                    }
                 }
             }
         }
+        return first;
     }
 }
