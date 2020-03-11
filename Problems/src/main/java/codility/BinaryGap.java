@@ -20,25 +20,19 @@ public class BinaryGap {
 
     private static int solution(int num) {
         String binary = Integer.toBinaryString(num);
-
         int first = binary.indexOf('1');
         int last = binary.lastIndexOf('1');
-
         int result = 0;
-
         if (last > first) {
             binary = binary.substring(first, last + 1);
             String[] array = binary.split("1", -1);
-
             for (int i = 0; i < array.length; i++) {
-                if (array[i].length() > 0) {
-                    int count = array[i].length();
-                    if (count > result) {
-                        result = count;
-                    }
+                int size = array[i].length();
+                if (size > result) {
+                    result = size;
                 }
             }
         }
-        return first;
+        return result;
     }
 }
