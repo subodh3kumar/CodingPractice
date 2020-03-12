@@ -13,16 +13,17 @@ public class CyclicRotation {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String str = input.nextLine();
+        String str = input.nextLine(); // 3 8 9 7 6, 3
         int num = input.nextInt();
         input.close();
+
         String[] strings = str.split(" ");
         int[] array = new int[strings.length];
         for (int i = 0; i < array.length; i++) {
             array[i] = Integer.parseInt(strings[i]);
         }
-        int[] result = solution(array, num);
-        System.out.println(Arrays.toString(result));
+
+        System.out.println(Arrays.toString(solution(array, num)));
     }
 
     private static int[] solution(int[] array, int num) {

@@ -12,12 +12,11 @@ public class BinaryGap {
     public static void main(String[] args) throws Exception {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            int num = Integer.parseInt(reader.readLine());
+            int num = Integer.parseInt(reader.readLine()); // 529, 32, 1041
             String binary = Integer.toBinaryString(num);
-            int result = solution(binary);
-            //System.out.println(result);
-            int result2 = solution2(binary);
-            //System.out.println(result2);
+
+            System.out.println(solution(binary));
+            System.out.println(solution2(binary));
         }
     }
 
