@@ -26,12 +26,15 @@ public class CyclicRotation {
     }
 
     private static int[] solution(int[] array, int num) {
+        long startTime = System.nanoTime();
         int size = array.length;
         int[] result = new int[size];
         for (int i = 0; i < size; i++) {
             int remainder = (i + num) % size;
             result[remainder] = array[i];
         }
+        long endTime = System.nanoTime();
+        System.out.println("elapsedTime in nano second (solution): " + (endTime - startTime));
         return result;
     }
 }

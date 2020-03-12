@@ -13,13 +13,16 @@ public class BinaryGap {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             int num = Integer.parseInt(reader.readLine());
-            int result = solution(num);
-            System.out.println(result);
+            String binary = Integer.toBinaryString(num);
+            int result = solution(binary);
+            //System.out.println(result);
+            int result2 = solution2(binary);
+            //System.out.println(result2);
         }
     }
 
-    private static int solution(int num) {
-        String binary = Integer.toBinaryString(num);
+    private static int solution(String binary) {
+        long startTime = System.nanoTime();
         int first = binary.indexOf('1');
         int last = binary.lastIndexOf('1');
         int result = 0;
@@ -33,6 +36,32 @@ public class BinaryGap {
                 }
             }
         }
+        long endTime = System.nanoTime();
+        System.out.println("elapsedTime in nano second (solution): " + (endTime - startTime));
         return result;
+    }
+
+    private static int solution2(String binary) {
+        long startTime = System.nanoTime();
+        int length = 0;
+        int index = 0;
+        for (int i = 0; i < binary.length(); i = index) {
+            int start = binary.indexOf('0', index);
+            if (start < 0) {
+                break;
+            }
+            int end = binary.indexOf('1', start) - 1;
+            if (end < 0) {
+                break;
+            }
+            int temp = end - start + 1;
+            if (temp > length) {
+                length = temp;
+            }
+            index = end + 1;
+        }
+        long endTime = System.nanoTime();
+        System.out.println("elapsedTime in nano second (solution2): " + (endTime - startTime));
+        return length;
     }
 }
