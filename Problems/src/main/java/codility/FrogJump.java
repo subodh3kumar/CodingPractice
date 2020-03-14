@@ -11,19 +11,34 @@ public class FrogJump {
     public static void main(String[] args) throws Exception {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             int position = Integer.parseInt(reader.readLine());
-            int jump = Integer.parseInt(reader.readLine());
             int destination = Integer.parseInt(reader.readLine());
+            int jump = Integer.parseInt(reader.readLine());
             System.out.println(solution(position, destination, jump));
+            System.out.println(solution2(position, destination, jump));
         }
+    }
+
+    private static int solution2(int position, int destination, int jump) {
+        long startTime = System.nanoTime();
+        int distance = destination - position;
+        int result = distance / jump;
+        if (distance % jump != 0) {
+            result++;
+        }
+        long endTime = System.nanoTime();
+        System.out.println("elapsedTime in nano second (solution2): " + (endTime - startTime));
+        return result;
     }
 
     private static int solution(int position, int destination, int jump) {
         long startTime = System.nanoTime();
         int result = 0;
-
-        while (position <= destination) {
+        while (position != destination) {
             position += jump;
             result++;
+            if (position >= destination) {
+                break;
+            }
         }
         long endTime = System.nanoTime();
         System.out.println("elapsedTime in nano second (solution): " + (endTime - startTime));
