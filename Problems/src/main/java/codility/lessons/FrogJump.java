@@ -1,4 +1,4 @@
-package codility;
+package codility.lessons;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -18,6 +18,9 @@ public class FrogJump {
         }
     }
 
+    /**
+     * Time complexity o(1)
+     */
     private static int solution2(int position, int destination, int jump) {
         long startTime = System.nanoTime();
         int distance = destination - position;
@@ -30,6 +33,9 @@ public class FrogJump {
         return result;
     }
 
+    /**
+     * Time complexity o(destination - position)
+     */
     private static int solution(int position, int destination, int jump) {
         long startTime = System.nanoTime();
         int result = 0;
