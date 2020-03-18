@@ -24,7 +24,7 @@ public class SumWithoutPlusOperator {
 
     private static int addIterative(int a, int b) {
         while (b != 0) {
-            int carry = (a & b); // carry is tow integer is A AND B
+            int carry = a & b; // carry is tow integer is A AND B
             a = a ^ b; // sum of two bits is A XOR B
             b = carry << 1; // shifts carry to 1 bit to calculate sum
         }
