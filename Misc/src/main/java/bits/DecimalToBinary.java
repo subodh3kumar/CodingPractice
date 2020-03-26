@@ -1,4 +1,4 @@
-package misc;
+package bits;
 
 import java.util.Scanner;
 
