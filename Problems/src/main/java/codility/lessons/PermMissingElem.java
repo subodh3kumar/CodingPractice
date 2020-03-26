@@ -22,9 +22,13 @@ public class PermMissingElem {
 
     private static int solution2(int[] array) {
         long startTime = System.nanoTime();
+        int missingElement = array.length + 1;
+        for (int i = 0; i < array.length; i++) {
+            missingElement = missingElement ^ array[i] ^ (i + 1);
+        }
         long endTime = System.nanoTime();
-        System.out.println("elapsedTime in nano second (solution): " + (endTime - startTime));
-        return 0;
+        System.out.println("elapsedTime in nano second (solution2): " + (endTime - startTime));
+        return missingElement;
     }
 
     private static int solution(int[] array) {
