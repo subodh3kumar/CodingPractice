@@ -2,10 +2,10 @@ package completable.venkat;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ComposeTest {
+public class CF08_Combine {
 
     public static void main(String[] args) {
-        create(2).thenCompose(data -> create(data))
+        create(2).thenCombine(create(3), (a, b) -> a + b)
                 .thenAccept(System.out::println);
     }
 

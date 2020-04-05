@@ -2,7 +2,7 @@ package completable.venkat;
 
 import java.util.concurrent.CompletableFuture;
 
-public class AsyncTaskLambda {
+public class CF03_AsyncTaskLambda {
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println("main(): " + Thread.currentThread());

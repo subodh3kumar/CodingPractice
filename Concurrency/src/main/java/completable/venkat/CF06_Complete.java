@@ -2,7 +2,7 @@ package completable.venkat;
 
 import java.util.concurrent.CompletableFuture;
 
-public class CompleteTest {
+public class CF06_Complete {
 
     public static void main(String[] args) {
         CompletableFuture<Integer> future = new CompletableFuture<>();

@@ -1,15 +1,15 @@
 package completable.venkat;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ForkJoinPool;
 
-public class AsyncTaskForkJoinPool {
-
-    public static ForkJoinPool forkJoinPool = new ForkJoinPool(10);
+public class CF01_AsyncTask {
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println("main(): " + Thread.currentThread());
-        create().thenAccept(data -> printIt(data));
+        CompletableFuture<Integer> cf = create();
+        Thread.sleep(1000);
+        cf.thenAccept(data -> printIt(data));
+        Thread.sleep(1000);
     }
 
     private static void printIt(Integer data) {
@@ -19,7 +19,7 @@ public class AsyncTaskForkJoinPool {
 
     private static CompletableFuture<Integer> create() {
         System.out.println("create(): " + Thread.currentThread());
-        return CompletableFuture.supplyAsync(() -> compute(), forkJoinPool);
+        return CompletableFuture.supplyAsync(() -> compute());
     }
 
     private static int compute() {
