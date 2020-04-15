@@ -27,6 +27,6 @@ public class ReadFileIntoStringTest {
         //Path file = Paths.get("src/test/resources/names.txt");
         String content = Files.readString(file);
         System.out.println(content);
-        MatcherAssert.assertThat(content, CoreMatchers.is("subodh\r\njuli"));
+        MatcherAssert.assertThat(content, CoreMatchers.is("subodh"));
     }
 }
