@@ -3,7 +3,7 @@ package completable.venkat;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ForkJoinPool;
 
-public class CF02_AsyncTaskForkJoinPool {
+public class P02_AsyncTaskForkJoinPool {
 
     public static ForkJoinPool forkJoinPool = new ForkJoinPool(10);
 

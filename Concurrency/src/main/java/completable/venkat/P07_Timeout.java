@@ -3,7 +3,7 @@ package completable.venkat;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-public class CF07_Timeout {
+public class P07_Timeout {
 
     public static void main(String[] args) throws Exception {
         CompletableFuture<Integer> future = new CompletableFuture<>();

@@ -2,7 +2,7 @@ package completable.venkat;
 
 import java.util.concurrent.CompletableFuture;
 
-public class CF05_ApplyAccept {
+public class P05_ApplyAccept {
 
     public static void main(String[] args) {
         create().thenApply(data -> data * 2)
