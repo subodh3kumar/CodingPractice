@@ -1,10 +1,10 @@
-package workshop;
+package workshop.basics;
 
 import io.reactivex.Flowable;
 
 import java.util.concurrent.TimeUnit;
 
-public class DoubleEvenNumber {
+public class DataChannel {
 
     public static void main(String[] args) {
         Flowable.interval(1, 1, TimeUnit.SECONDS)
