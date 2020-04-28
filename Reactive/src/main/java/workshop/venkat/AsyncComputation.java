@@ -1,15 +1,17 @@
-package workshop.basics;
+package workshop.venkat;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
+import io.reactivex.schedulers.Schedulers;
 
-public class SyncComputation {
+public class AsyncComputation {
 
     public static void main(String[] args) {
         Flowable.<Integer>create(emitter -> emit(emitter), BackpressureStrategy.BUFFER)
+                .observeOn(Schedulers.computation(), true, 2)
                 .map(data -> data * 1)
-                .subscribe(SyncComputation::process,
+                .subscribe(AsyncComputation::process,
                         error -> System.out.println("ERROR: " + error),
                         () -> System.out.println("DONE"));
 
@@ -28,13 +30,14 @@ public class SyncComputation {
             count++;
 
             System.out.println("Producer: " + count);
+
             emitter.onNext(count);
             sleep(500);
         }
         emitter.onComplete();
     }
 
-    public static boolean sleep(int ms) {
+    private static boolean sleep(int ms) {
         try {
             Thread.sleep(ms);
             return true;

@@ -1,18 +1,15 @@
-package workshop.basics;
+package workshop.venkat;
 
 import io.reactivex.Flowable;
 
 import java.util.concurrent.TimeUnit;
 
-public class CompletionChannel {
+public class ErrorChannel {
 
     public static void main(String[] args) {
         Flowable.interval(1, 1, TimeUnit.SECONDS)
-                .take(3)
                 .map(e -> transform(e))
-                .subscribe(System.out::println,
-                        error -> System.out.println("ERROR: " + error),
-                        () -> System.out.println("DONE"));
+                .subscribe(System.out::println, error -> System.out.println("ERROR: " + error));
 
         try {
             Thread.sleep(10000);
