@@ -46,6 +46,10 @@ public class QuickSort {
     }
 
     private static void display(int[] array) {
-        System.out.println(Arrays.stream(array).boxed().map(num -> String.valueOf(num)).collect(Collectors.joining(" ")));
+        String result = Arrays.stream(array)
+                .boxed()
+                .map(num -> String.valueOf(num))
+                .collect(Collectors.joining(" "));
+        System.out.println(result);
     }
 }
