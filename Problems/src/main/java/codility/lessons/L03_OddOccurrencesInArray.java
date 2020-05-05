@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Find value that occurs in odd number of elements.
  */
-public class OddOccurrencesInArray {
+public class L03_OddOccurrencesInArray {
 
     public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in);
@@ -42,7 +42,7 @@ public class OddOccurrencesInArray {
             }
         }
         long endTime = System.nanoTime();
-        System.out.println("elapsedTime in nano second (solution4): " + (endTime - startTime));
+        System.out.println("time taken(4): " + (endTime - startTime));
         return result;
     }
 
@@ -56,7 +56,7 @@ public class OddOccurrencesInArray {
             }
         }
         long endTime = System.nanoTime();
-        System.out.println("elapsedTime in nano second (solution3): " + (endTime - startTime));
+        System.out.println("time taken(3): " + (endTime - startTime));
         return result;
     }
 
@@ -67,7 +67,7 @@ public class OddOccurrencesInArray {
             result ^= array[i];
         }
         long endTime = System.nanoTime();
-        System.out.println("elapsedTime in nano second (solution2): " + (endTime - startTime));
+        System.out.println("time taken(2): " + (endTime - startTime));
         return result;
     }
 
@@ -92,7 +92,7 @@ public class OddOccurrencesInArray {
             }
         }
         long endTime = System.nanoTime();
-        System.out.println("elapsedTime in nano second (solution): " + (endTime - startTime));
+        System.out.println("time taken: " + (endTime - startTime));
         return result;
     }
 }

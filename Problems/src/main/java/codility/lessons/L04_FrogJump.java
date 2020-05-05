@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 /**
  * Count minimal number of jumps from position X to Y
  */
-public class FrogJump {
+public class L04_FrogJump {
 
     public static void main(String[] args) throws Exception {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
@@ -29,7 +29,7 @@ public class FrogJump {
             result++;
         }
         long endTime = System.nanoTime();
-        System.out.println("elapsedTime in nano second (solution2): " + (endTime - startTime));
+        System.out.println("time taken(2): " + (endTime - startTime));
         return result;
     }
 
@@ -47,7 +47,7 @@ public class FrogJump {
             }
         }
         long endTime = System.nanoTime();
-        System.out.println("elapsedTime in nano second (solution): " + (endTime - startTime));
+        System.out.println("time taken: " + (endTime - startTime));
         return result;
     }
 }

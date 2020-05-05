@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 /**
  * Find the missing element in a given permutation.
  */
-public class PermMissingElem {
+public class L05_PermMissingElem {
 
     public static void main(String[] args) throws Exception {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
@@ -27,7 +27,7 @@ public class PermMissingElem {
             missingElement = missingElement ^ array[i] ^ (i + 1);
         }
         long endTime = System.nanoTime();
-        System.out.println("elapsedTime in nano second (solution2): " + (endTime - startTime));
+        System.out.println("time taken(2): " + (endTime - startTime));
         return missingElement;
     }
 
@@ -40,7 +40,7 @@ public class PermMissingElem {
             partialSum += array[i];
         }
         long endTime = System.nanoTime();
-        System.out.println("elapsedTime in nano second (solution): " + (endTime - startTime));
+        System.out.println("time taken: " + (endTime - startTime));
         return (int) (sum - partialSum);
     }
 }

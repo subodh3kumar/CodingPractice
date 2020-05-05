@@ -6,7 +6,7 @@ package codility.lessons;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class BinaryGap {
+public class L01_BinaryGap {
 
     public static void main(String[] args) throws Exception {
 
@@ -35,7 +35,7 @@ public class BinaryGap {
             }
         }
         long endTime = System.nanoTime();
-        System.out.println("elapsedTime in nano second (solution): " + (endTime - startTime));
+        System.out.println("time taken: " + (endTime - startTime));
         return result;
     }
 
@@ -59,7 +59,7 @@ public class BinaryGap {
             index = end + 1;
         }
         long endTime = System.nanoTime();
-        System.out.println("elapsedTime in nano second (solution2): " + (endTime - startTime));
+        System.out.println("time taken(2): " + (endTime - startTime));
         return length;
     }
 }

@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * Rotate an array to the right by a given number of steps.
  */
-public class CyclicRotation {
+public class L02_CyclicRotation {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -32,7 +32,7 @@ public class CyclicRotation {
             result[remainder] = array[i];
         }
         long endTime = System.nanoTime();
-        System.out.println("elapsedTime in nano second (solution): " + (endTime - startTime));
+        System.out.println("time taken: " + (endTime - startTime));
         return result;
     }
 }
