@@ -28,6 +28,7 @@ public class L04_FrogJump {
         if (distance % jump != 0) {
             result++;
         }
+        
         long endTime = System.nanoTime();
         System.out.println("time taken(2): " + (endTime - startTime));
         return result;
