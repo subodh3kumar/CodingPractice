@@ -10,15 +10,12 @@
 
     <modules>
         <module>Arrays</module>
-        <module>Problems</module>
         <module>Streams</module>
         <module>Collections</module>
         <module>IO</module>
         <module>DataStructure</module>
         <module>Strings</module>
-        <module>JDBC</module>
         <module>DesignPattern</module>
-        <module>Misc</module>
         <module>Concurrency</module>
         <module>Reactive</module>
     </modules>
