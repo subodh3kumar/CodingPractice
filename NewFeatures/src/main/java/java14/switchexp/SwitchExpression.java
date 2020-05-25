@@ -1,16 +1,10 @@
 package java14.switchexp;
 
-import java.util.Scanner;
+import util.Constants;
+import util.Month;
 
-public class SwitchExpression {
+public class SwitchExpression implements Constants {
 
-    private static final String SUNDAY = "SUNDAY";
-    private static final String MONDAY = "MONDAY";
-    private static final String TUESDAY = "TUESDAY";
-    private static final String WEDNESDAY = "WEDNESDAY";
-    private static final String THURSDAY = "THURSDAY";
-    private static final String FRIDAY = "FRIDAY";
-    private static final String SATURDAY = "SATURDAY";
 
     public int traditionalSwitch(String day) {
         int result = 0;
@@ -47,7 +41,44 @@ public class SwitchExpression {
         return result;
     }
 
-    public static void newSwitchExprAssignment() {
+    public String traditionalSwitchWithYield(Month month) {
+        String result = switch (month) {
+            case JANUARY:
+            case FEBRUARY:
+            case MARCH:
+                yield FIRST_QUARTER;
+            case APRIL:
+            case MAY:
+            case JUNE:
+                yield SECOND_QUARTER;
+            case JULY:
+            case AUGUST:
+            case SEPTEMBER:
+                yield THIRD_QUARTER;
+            case OCTOBER:
+            case NOVEMBER:
+            case DECEMBER:
+                yield FOURTH_QUARTER;
+            default:
+                yield UNKNOWN;
+        };
+        return result;
+    }
+
+    public String switchWithYield(Month month) {
+        String result = switch (month) {
+            case JANUARY, FEBRUARY, MARCH:
+                yield FIRST_QUARTER;
+            case APRIL, MAY, JUNE:
+                yield SECOND_QUARTER;
+            case JULY, AUGUST, SEPTEMBER:
+                yield THIRD_QUARTER;
+            case OCTOBER, NOVEMBER, DECEMBER:
+                yield FOURTH_QUARTER;
+            default:
+                yield UNKNOWN;
+        };
+        return result;
     }
 }
 
