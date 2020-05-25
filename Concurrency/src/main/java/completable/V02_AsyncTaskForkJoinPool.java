@@ -1,9 +1,9 @@
-package completable.venkat;
+package completable;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ForkJoinPool;
 
-public class P02_AsyncTaskForkJoinPool {
+public class V02_AsyncTaskForkJoinPool {
 
     public static ForkJoinPool forkJoinPool = new ForkJoinPool(10);
 

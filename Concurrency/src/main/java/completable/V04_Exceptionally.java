@@ -1,21 +1,14 @@
-package completable.venkat;
+package completable;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
-public class P07_Timeout {
+public class V04_Exceptionally {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         CompletableFuture<Integer> future = new CompletableFuture<>();
-        //future.completeOnTimeout(500, 3, TimeUnit.SECONDS);
-        future.orTimeout(3, TimeUnit.SECONDS);
-
         process(future);
-
-        Thread.sleep(2000);
         //future.complete(2);
-        future.completeExceptionally(new RuntimeException("something went wrong"));
-        Thread.sleep(5000);
+        //future.completeExceptionally(new RuntimeException("something went wrong"));
     }
 
     private static void process(CompletableFuture<Integer> future) {

@@ -1,4 +1,4 @@
-package read;
+package io;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,8 +17,6 @@ public class ReadFromConsole {
             int age = input.nextInt();
             map.put(name, age);
         }
-
         map.forEach((k, v) -> System.out.println(k + ", " + v));
-
     }
 }

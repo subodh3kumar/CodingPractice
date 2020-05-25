@@ -1,8 +1,8 @@
-package completable.venkat;
+package completable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class P06_Complete {
+public class V06_Complete {
 
     public static void main(String[] args) {
         CompletableFuture<Integer> future = new CompletableFuture<>();
