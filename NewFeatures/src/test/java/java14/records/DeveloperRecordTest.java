@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-public class EntrySetWithRecord {
+public class DeveloperRecordTest {
 
     @Test
     public void entrySetWithRecord() {
