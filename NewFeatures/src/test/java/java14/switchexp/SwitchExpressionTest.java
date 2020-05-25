@@ -47,17 +47,17 @@ public class SwitchExpressionTest implements Constants {
     public void testTraditionalSwitchWithYield() {
         assertEquals(FIRST_QUARTER, obj.traditionalSwitchWithYield(Month.FEBRUARY));
         assertEquals(SECOND_QUARTER, obj.traditionalSwitchWithYield(Month.MAY));
-        assertEquals(FIRST_QUARTER, obj.traditionalSwitchWithYield(Month.FEBRUARY));
-        assertEquals(FIRST_QUARTER, obj.traditionalSwitchWithYield(Month.FEBRUARY));
+        assertEquals(THIRD_QUARTER, obj.traditionalSwitchWithYield(Month.AUGUST));
+        assertEquals(FOURTH_QUARTER, obj.traditionalSwitchWithYield(Month.DECEMBER));
         assertEquals(UNKNOWN, obj.traditionalSwitchWithYield(Month.UNKNOWN));
     }
 
     @Test
     public void testSwitchWithYield() {
-        assertEquals(FIRST_QUARTER, obj.traditionalSwitchWithYield(Month.FEBRUARY));
-        assertEquals(SECOND_QUARTER, obj.traditionalSwitchWithYield(Month.MAY));
-        assertEquals(FIRST_QUARTER, obj.traditionalSwitchWithYield(Month.FEBRUARY));
-        assertEquals(FIRST_QUARTER, obj.traditionalSwitchWithYield(Month.FEBRUARY));
+        assertEquals(FIRST_QUARTER, obj.traditionalSwitchWithYield(Month.JANUARY));
+        assertEquals(SECOND_QUARTER, obj.traditionalSwitchWithYield(Month.APRIL));
+        assertEquals(THIRD_QUARTER, obj.traditionalSwitchWithYield(Month.JULY));
+        assertEquals(FOURTH_QUARTER, obj.traditionalSwitchWithYield(Month.OCTOBER));
         assertEquals(UNKNOWN, obj.traditionalSwitchWithYield(Month.UNKNOWN));
     }
 }
