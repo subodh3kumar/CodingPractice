@@ -18,7 +18,6 @@
         <module>DesignPattern</module>
         <module>Concurrency</module>
         <module>Reactive</module>
-        <module>NewFeatures</module>
     </modules>
 
     <properties>
