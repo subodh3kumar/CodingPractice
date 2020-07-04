@@ -1,26 +1,24 @@
 package methods;
 
-public class CodePointMethods {
+import org.junit.jupiter.api.Test;
 
-    public static void main(String[] args) {
-        codePointAtMethod();
-        codePointCountMethod();
-        codePointBeforeMethod();
-        codePointsMethod();
-    }
+public class CodePointMethodTest {
 
-    private static void codePointsMethod() {
+    @Test
+    public void codePointsMethod() {
         String text = "hello";
         text.codePoints().forEach(System.out::println);
     }
 
-    private static void codePointBeforeMethod() {
+    @Test
+    public void codePointBeforeMethod() {
         String text = "hello";
         System.out.println(text.codePointBefore(1));
         System.out.println(text.codePointBefore(0));
     }
 
-    private static void codePointCountMethod() {
+    @Test
+    public void codePointCountMethod() {
         String text = "hello";
         System.out.println(text.codePointCount(0, 3));
         System.out.println(text.codePointCount(1, 3));
@@ -28,12 +26,13 @@ public class CodePointMethods {
         System.out.println(text.codePointCount(3, 1));
     }
 
-    private static void codePointAtMethod() {
+    @Test
+    public void codePointAtMethod() {
         String name = "subodh";
         for (int i = 0; i < name.length(); i++) {
             System.out.println(name.codePointAt(i));
         }
         System.out.println("--------");
-        System.out.println(name.codePointAt(-1));
+        System.out.println(name.codePointAt(-1)); // StringIndexOutOfBoundsException
     }
 }
