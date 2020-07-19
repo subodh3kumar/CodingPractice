@@ -4,29 +4,27 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class RemoveElements {
 
     public static void main(String[] args) {
-        List<User> users = getUserList();
+        List<User> users = new LinkedList<>(getUserList());
         System.out.println("users before deletion");
         users.forEach(System.out::println);
-
-        System.out.println("users after deletion");
+        System.out.println("users size: " + users.size());
+        System.out.println("\nusers after deletion");
         List<Integer> idsToBeRemove = getIds();
         remove(users, idsToBeRemove);
         users.forEach(System.out::println);
+        System.out.println("users size: " + users.size());
     }
 
     private static void remove(List<User> users, List<Integer> ids) {
         Iterator<User> iterator = users.iterator();
-        //List<User> usersToBeRemove = new ArrayList<>();
         while (iterator.hasNext()) {
             User user = iterator.next();
             int id = user.getId();
@@ -34,7 +32,6 @@ public class RemoveElements {
                 iterator.remove();
             }
         }
-       // users.removeAll(usersToBeRemove);
     }
 
 
