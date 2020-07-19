@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MergeMap {
 
@@ -93,6 +90,20 @@ public class MergeMap {
     private static class SearchKey {
         private int id;
         private String idType;
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            SearchKey searchKey = (SearchKey) o;
+            return id == searchKey.id &&
+                    Objects.equals(idType, searchKey.idType);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(id, idType);
+        }
     }
 
     @Data
