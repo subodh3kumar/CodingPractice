@@ -34,7 +34,6 @@ public class RemoveElements {
         }
     }
 
-
     private static List<Integer> getIds() {
         return List.of(103, 106, 107, 109);
     }
