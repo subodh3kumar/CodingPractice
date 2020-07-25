@@ -41,4 +41,13 @@ public class ReadWriteFileTest {
         String actual = Files.readString(file);
         Assertions.assertEquals(content, actual);
     }
+
+    @Test
+    @DisplayName("file name from the path")
+    public void testExtractFileName() {
+        String path = "src/test/resources/welcome.txt";
+        String fileName = Path.of(path).getFileName().toString();
+        System.out.println("file name: " + fileName);
+        Assertions.assertEquals("welcome.txt", fileName);
+    }
 }
