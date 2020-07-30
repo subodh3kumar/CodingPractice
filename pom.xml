@@ -21,7 +21,7 @@
     </modules>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>14</java.version>
         <hamcrest.version>2.2</hamcrest.version>
         <assertj.version>3.16.1</assertj.version>
         <lombok.version>1.18.12</lombok.version>
