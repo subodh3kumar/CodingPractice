@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
@@ -10,10 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DateTimeTest {
 
-    private DateTime obj;
+    private static DateTime obj;
 
-    @BeforeEach
-    private void init() {
+    @BeforeAll
+    private static void init() {
         obj = new DateTime();
     }
 
@@ -30,7 +30,7 @@ public class DateTimeTest {
         LocalDate today = LocalDate.now();
         long days = ChronoUnit.DAYS.between(previousDay, today);
         System.out.println("day difference: " + days);
-        assertThat(days).isEqualTo(5);
+        assertThat(days).isEqualTo(6);
     }
 
     @Test
