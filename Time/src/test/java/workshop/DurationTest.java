@@ -18,4 +18,6 @@ public class DurationTest {
         Duration duration = Duration.between(start, Instant.now());
         System.out.printf("%d seconds and %d millisecond", duration.toSeconds(), duration.toMillis());
     }
+
+
 }
