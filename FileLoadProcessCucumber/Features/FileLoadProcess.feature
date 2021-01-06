@@ -1,8 +1,14 @@
 Feature: File Load Process
-  Scenario: Verify Different Types of Files in a Directory
-    Given browse file location "<fileLocation>"
+
+  Scenario Outline: Verify Different Types of Files in a Directory
+    Given browse the file "<directory>"
     When load the file
-    Then get the type of file
+    Then get the file name
     Then verify file is empty or not
-    Then display the file header
+    Then get the file information
+
+    Examples:
+      | directory                               |
+      | /Development/Files/Input/Cucumber       |
+      #| /Development/Files/Input/Cucumber/Input |
 
