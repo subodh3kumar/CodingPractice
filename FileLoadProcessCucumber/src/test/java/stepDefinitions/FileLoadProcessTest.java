@@ -56,6 +56,7 @@ public class FileLoadProcessTest {
     public void displayFileName() {
         log.info("displayFileName() method called");
         List<String> fileNames = this.files.stream().map(file -> file.getFileName().toString()).collect(Collectors.toList());
+        log.info("below files available in a directory-");
         fileNames.forEach(log::info);
     }
 
@@ -100,7 +101,7 @@ public class FileLoadProcessTest {
             String[] headers = reader.readNext();
             log.info("header names: {}", Arrays.toString(headers));
             long count = Files.lines(path).count();
-            log.info("total lines available: {}", count);
+            log.info("total rows available: {}", count);
         } catch (IOException | CsvValidationException e) {
             log.error("ERROR: ", e);
         }
@@ -114,6 +115,7 @@ public class FileLoadProcessTest {
             log.info(String.format("%-10s%-40s", "index", "column name"));
             log.info(String.format("%-10s%-40s", "-----", "---------------------"));
             columns.forEach((k, v) -> log.info(String.format("%-10d%-40s", k, v)));
+            log.info("total rows available: {}", sheet.getPhysicalNumberOfRows());
         } catch (IOException e) {
             log.error("ERROR: ", e);
         }
@@ -138,7 +140,7 @@ public class FileLoadProcessTest {
             String[] header = firstLine.split(",");
             log.info("header names: {}", Arrays.toString(header));
             long count = Files.lines(path).count();
-            log.info("total lines available: {}", count);
+            log.info("total rows available: {}", count);
         } catch (IOException e) {
             log.error("ERROR: ", e);
         }
