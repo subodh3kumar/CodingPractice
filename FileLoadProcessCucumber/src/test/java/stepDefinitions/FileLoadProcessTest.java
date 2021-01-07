@@ -15,10 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -74,13 +71,43 @@ public class FileLoadProcessTest {
 
     private boolean isFileNotEmpty(Path path) {
         String fileName = path.getFileName().toString();
-        if (path.toFile().length() == 0) {
-            log.info(fileName + " is empty");
-            return false;
+        boolean isNotEmpty = false;
+        if (fileName.endsWith(".xlsx") || fileName.endsWith(".xls")) {
+            boolean isExcelBlank = isExcelBlank(path);
+            if (isExcelBlank) {
+                log.info(fileName + " is empty");
+            } else {
+                isNotEmpty = true;
+                log.info(fileName + " is not empty");
+            }
         } else {
-            log.info(fileName + " is not empty");
-            return true;
+            long length = path.toFile().length();
+            if (length == 0) {
+                log.info(fileName + " is empty");
+            } else {
+                isNotEmpty = true;
+                log.info(fileName + " is not empty");
+            }
         }
+        return isNotEmpty;
+    }
+
+    private boolean isExcelBlank(Path path) {
+        try (Workbook workbook = WorkbookFactory.create(Files.newInputStream(path))) {
+            Sheet sheet = workbook.getSheetAt(0);
+            Iterator<Row> rowIterator = sheet.rowIterator();
+            while (rowIterator.hasNext()) {
+                Row row = rowIterator.next();
+                Iterator<Cell> cellIterator = row.cellIterator();
+                final Cell cell = cellIterator.next();
+                if (!cell.getStringCellValue().isEmpty()) {
+                    return false;
+                }
+            }
+        } catch (IOException e) {
+            log.error("ERROR: ", e);
+        }
+        return true;
     }
 
     private void getFileInformation(Path path) {
