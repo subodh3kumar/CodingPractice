@@ -10,5 +10,5 @@ Feature: File Load Process
     Examples:
       | directory                               |
       | /Development/Files/Input/Cucumber       |
-      #| /Development/Files/Input/Cucumber/Input |
+      | /Development/Files/Input/Cucumber/Input |
 
