@@ -7,7 +7,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.*;
+import workshop.entity.User;
+import workshop.util.PersistenceUtil;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -21,6 +26,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class FileLoadProcessTest {
 
+    private EntityManagerFactory factory;
     private Path directory;
     private List<Path> files;
 
@@ -47,6 +53,22 @@ public class FileLoadProcessTest {
         } catch (IOException e) {
             log.error("ERROR: ", e);
         }
+
+        factory = PersistenceUtil.getEntityManagerFactory();
+        EntityManager manager = factory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+
+        try {
+            transaction.begin();
+            User user = new User(1001, "Subodh", "Kumar");
+            manager.persist(user);
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            log.error("ERROR");
+        } finally {
+            manager.close();
+        }
     }
 
     @Then("get the file name")
@@ -55,6 +77,22 @@ public class FileLoadProcessTest {
         List<String> fileNames = this.files.stream().map(file -> file.getFileName().toString()).collect(Collectors.toList());
         log.info("below files available in a directory-");
         fileNames.forEach(log::info);
+        log.info("loading student...");
+
+        EntityManager manager = factory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+        try {
+            transaction.begin();
+            List<User> users = manager.createQuery("select u from User u", User.class).getResultList();
+            users.forEach(user -> log.info(user.toString()));
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            log.error("ERROR");
+        } finally {
+            manager.close();
+            factory.close();
+        }
     }
 
     @Then("verify file is empty or not")

@@ -14,10 +14,12 @@ public final class PersistenceUtil {
     private static EntityManagerFactory entityManagerFactory;
 
     public static EntityManagerFactory getEntityManagerFactory() {
+        log.info("getEntityManagerFactory() method called");
         Properties props = new Properties();
         if (entityManagerFactory == null) {
             try {
-                String fileName = System.getProperty("persistence_property_file_path");
+                String fileName = System.getenv("persistence_property_file_path");
+                log.info("file name: {}", fileName);
                 //props.load(new FileInputStream("/Development/Workspace/IDEA/CodingPractice/FileLoadProcessCucumber/src/main/resources/persistence.properties"));
                 props.load(new FileInputStream(fileName));
                 entityManagerFactory = Persistence.createEntityManagerFactory("persistence_unit", props);
