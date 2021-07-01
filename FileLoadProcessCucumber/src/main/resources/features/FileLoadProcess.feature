@@ -6,9 +6,9 @@ Feature: File Load Process
     Then get the file name
     Then verify file is empty or not
     Then get the file information
+    Then load "temp.txt"
 
     Examples:
       | directory                               |
       | /Development/Files/Input/Cucumber       |
-      | /Development/Files/Input/Cucumber/Input |
 

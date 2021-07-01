@@ -10,7 +10,7 @@ public class FileLoadProcessRunner {
         log.info("main() method called");
         String[] arguments = {
                 "--glue", "workshop/stepDefinitions", "src/main/resources/features/FileLoadProcess.feature",
-                "--plugin", "html:/Development/Files/Output/Cucumber/file-load-process-report.html"
+                "--plugin", "html:target/test-report"
         };
         Main.run(arguments);
     }

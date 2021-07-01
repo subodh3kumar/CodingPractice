@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
@@ -73,5 +75,19 @@ public class DateTimeTest {
         final Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, -1);
         System.out.println("yesterday date: " + calendar.getTime());
+    }
+
+    @Test
+    @Disabled
+    public void testCurrentTimestamp() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(localDateTime);
+    }
+
+    @Test
+    public void testFormatCurrentTimestamp() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+        String timestamp = LocalDateTime.now().format(formatter);
+        System.out.println(timestamp);
     }
 }

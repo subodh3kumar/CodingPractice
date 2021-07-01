@@ -20,11 +20,11 @@ public final class PersistenceUtil {
             try {
                 String fileName = System.getenv("persistence_property_file_path");
                 log.info("file name: {}", fileName);
-                //props.load(new FileInputStream("/Development/Workspace/IDEA/CodingPractice/FileLoadProcessCucumber/src/main/resources/persistence.properties"));
-                props.load(new FileInputStream(fileName));
+                props.load(new FileInputStream("/Development/Workspace/IDEA/CodingPractice/FileLoadProcessCucumber/src/main/resources/persistence.properties"));
+                //props.load(new FileInputStream(fileName));
                 entityManagerFactory = Persistence.createEntityManagerFactory("persistence_unit", props);
             } catch (IOException e) {
-                log.error("ERROR: {}", e);
+                log.error("ERROR", e);
             }
         }
         return entityManagerFactory;
