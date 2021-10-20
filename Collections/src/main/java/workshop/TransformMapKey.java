@@ -1,9 +1,5 @@
 package workshop;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,7 +16,7 @@ public class TransformMapKey {
     }
 
     private static Map<Integer, Product> transform(Map<SearchKey, Product> productMap) {
-        return productMap.entrySet().stream().collect(Collectors.toMap(entry -> entry.getKey().getId(), Map.Entry::getValue));
+        return productMap.entrySet().stream().collect(Collectors.toMap(entry -> entry.getKey().id(), Map.Entry::getValue));
     }
 
     private static Map<SearchKey, Product> getProductMap() {
@@ -45,29 +41,12 @@ public class TransformMapKey {
         return result;
     }
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    private static class SearchKey {
-        private int id;
-        private String idType;
+    private static record SearchKey(int id, String idType) {
     }
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    private static class Price {
-        private int id;
-        private Double productPrice;
-        private int productQuantity;
+    private static record Price(int id, Double productPrice, int productQuantity) {
     }
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    private static class Product {
-        private int id;
-        private String productName;
-        private String productDesc;
+    private static record Product(int id, String productName, String productDesc) {
     }
 }

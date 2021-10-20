@@ -1,10 +1,9 @@
 package workshop;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MergeMap {
 
@@ -26,14 +25,7 @@ public class MergeMap {
                 Price price = priceMap.get(key);
                 Product product = productMap.get(key);
 
-                Invoice invoice = new Invoice();
-
-                invoice.setId(key.getId());
-                invoice.setProductName(product.getProductName());
-                invoice.setProductDesc(product.getProductDesc());
-                invoice.setPrice(price.getProductPrice());
-                invoice.setQuantity(price.getProductQuantity());
-
+                Invoice invoice = new Invoice(key.id(), product.productName(), product.productDesc(), price.productPrice(), price.productQuantity());
                 invoices.add(invoice);
             }
         }
@@ -84,55 +76,16 @@ public class MergeMap {
         return result;
     }
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    private static class SearchKey {
-        private int id;
-        private String idType;
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            SearchKey searchKey = (SearchKey) o;
-            return id == searchKey.id &&
-                    Objects.equals(idType, searchKey.idType);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(id, idType);
-        }
+    private static record SearchKey(int id, String idType) {
     }
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    private static class Price {
-        private int id;
-        private Double productPrice;
-        private int productQuantity;
+    private static record Price(int id, Double productPrice, int productQuantity) {
     }
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    private static class Product {
-        private int id;
-        private String productName;
-        private String productDesc;
+    private static record Product(int id, String productName, String productDesc) {
     }
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    private static class Invoice {
-        private int id;
-        private String productName;
-        private String productDesc;
-        private Double price;
-        private int quantity;
+    private static record Invoice(int id, String productName, String productDesc, Double price, int quantity) {
     }
 }
 

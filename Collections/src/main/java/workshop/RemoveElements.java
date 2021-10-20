@@ -1,9 +1,5 @@
 package workshop;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -27,7 +23,7 @@ public class RemoveElements {
         Iterator<User> iterator = users.iterator();
         while (iterator.hasNext()) {
             User user = iterator.next();
-            int id = user.getId();
+            int id = user.id();
             if (ids.contains(id)) {
                 iterator.remove();
             }
@@ -54,11 +50,6 @@ public class RemoveElements {
         );
     }
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    private static class User {
-        private int id;
-        private String name;
+    private static record User(int id, String name) {
     }
 }
