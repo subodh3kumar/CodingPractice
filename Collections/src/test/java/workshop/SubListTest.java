@@ -54,7 +54,7 @@ class SubListTest {
         list.forEach(System.out::println);
         System.out.println("---------");
         Objects.requireNonNull(list);
-        list.removeAll(list);
+        list.clear();
         Assertions.assertEquals(0, list.size());
     }
 
