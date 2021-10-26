@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListTest {
+class ListTest {
 
     @Test
-    public void testContainsList() {
+    void testContainsList() {
         List<String> list = new ArrayList<>();
         list.add("juli");
         list.add("subodh");
@@ -25,7 +25,7 @@ public class ListTest {
     }
 
     @Test
-    public void testRemove() {
+    void testRemove() {
         List<String> words = new ArrayList<>();
         words.add("one");
         words.add("two");

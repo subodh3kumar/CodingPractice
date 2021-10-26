@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapStreamTest {
+class MapStreamTest {
 
     private Map<String, Integer> map;
 
@@ -29,7 +29,7 @@ public class MapStreamTest {
 
     @Test
     @DisplayName("remove by value")
-    public void removeByValue() {
+    void removeByValue() {
         map.values().removeIf(entry -> entry == 3);
         display(map);
 

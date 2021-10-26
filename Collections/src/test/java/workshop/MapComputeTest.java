@@ -7,7 +7,7 @@ import java.util.HashMap;
 class MapComputeTest {
 
     @Test
-    public void testCompute1() {
+    void testCompute1() {
         var map = new HashMap<String, String>();
         map.put("Name", "Subodh");
         map.put("Address", "Chennai");
@@ -22,7 +22,7 @@ class MapComputeTest {
 
 
     @Test
-    public void testCompute2() {
+    void testCompute2() {
         var map = new HashMap<String, Integer>();
         map.put("key1", 12);
         map.put("key2", 22);
@@ -36,7 +36,7 @@ class MapComputeTest {
     }
 
     @Test
-    public void testCompute3() {
+    void testCompute3() {
         var map = new HashMap<String, Integer>();
         map.put("key1", 12);
         map.put("key2", 22);
