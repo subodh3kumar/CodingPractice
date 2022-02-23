@@ -1,24 +1,30 @@
 package workshop;
 
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-public class CodePointTest {
+class CodePointTest {
 
     @Test
-    public void codePointsMethod() {
-        String text = "hello";
-        text.codePoints().forEach(System.out::println);
+    void codePointsMethod() {
+        final var intStream = "hello".codePoints();
+        final var ints = intStream.toArray();
+        Assertions.assertThat(ints[0]).isEqualTo(104);
+        Assertions.assertThat(ints[1]).isEqualTo(101);
     }
 
     @Test
-    public void codePointBeforeMethod() {
+    @Disabled
+    void codePointBeforeMethod() {
         String text = "hello";
         System.out.println(text.codePointBefore(1));
         //System.out.println(text.codePointBefore(0));
     }
 
     @Test
-    public void codePointCountMethod() {
+    @Disabled
+    void codePointCountMethod() {
         String text = "hello";
         System.out.println(text.codePointCount(0, 3));
         System.out.println(text.codePointCount(1, 3));
@@ -27,7 +33,8 @@ public class CodePointTest {
     }
 
     @Test
-    public void codePointAtMethod() {
+    @Disabled
+    void codePointAtMethod() {
         String name = "subodh";
         for (int i = 0; i < name.length(); i++) {
             System.out.println(name.codePointAt(i));
