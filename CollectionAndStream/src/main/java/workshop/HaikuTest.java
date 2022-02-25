@@ -3,6 +3,7 @@ package workshop;
 import org.eclipse.collections.api.bag.MutableBag;
 import org.eclipse.collections.api.bag.primitive.CharBag;
 import org.eclipse.collections.api.list.ListIterable;
+import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.api.set.MutableSet;
 import org.eclipse.collections.api.tuple.primitive.CharIntPair;
 import org.eclipse.collections.impl.factory.Strings;
@@ -13,7 +14,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class HaikuTest {
 
@@ -57,7 +59,7 @@ public class HaikuTest {
                 .filter(Character::isAlphabetic)
                 .map(Character::toLowerCase)
                 .mapToObj(i -> (char) i)
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                .collect(groupingBy(Function.identity(), counting()));
 
         List<Map.Entry<Character, Long>> top3 = chars.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
@@ -113,20 +115,69 @@ public class HaikuTest {
                 .filter(Character::isAlphabetic)
                 .map(Character::toLowerCase)
                 .mapToObj(i -> (char) i)
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                .collect(groupingBy(Function.identity(), counting()));
 
         Map<Character, Long> duplicates = chars.entrySet().stream()
                 .filter(entry -> entry.getValue() > 1)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                .collect(toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         Set<Character> unique = chars.entrySet().stream()
                 .filter(entry -> entry.getValue() < 2)
                 .map(Map.Entry::getKey)
-                .collect(Collectors.toSet());
+                .collect(toSet());
 
         Assertions.assertEquals(chars, duplicates);
         Assertions.assertEquals(Set.of(), unique);
     }
 
+    @Test
+    public void topVowelAndConsonantEclipseCollection() {
+        MutableList<CharIntPair> charIntPairs = Strings.asChars(this.haiku)
+                .asLazy()
+                .select(Character::isAlphabetic)
+                .collectChar(Character::toLowerCase)
+                .toBag()
+                .topOccurrences(26);
 
+        char topVowel = charIntPairs.detect(pair -> this.isVowel(pair.getOne())).getOne();
+        char topConsonant = charIntPairs.detect(pair -> !isVowel(pair.getOne())).getOne();
+
+        Assertions.assertEquals(topVowel, 'e');
+        Assertions.assertEquals(topConsonant, 't');
+    }
+
+    @Test
+    public void topVowelAndConsonantJavaStream() {
+        List<Map.Entry<Character, Long>> entries = this.haiku.chars()
+                .filter(Character::isAlphabetic)
+                .map(Character::toLowerCase)
+                .mapToObj(i -> (char) i)
+                .collect(groupingBy(Function.identity(), counting()))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .toList();
+
+        Character topVowel = entries.stream()
+                .filter(entry -> this.isVowel(entry.getKey()))
+                .findFirst()
+                .orElseThrow()
+                .getKey();
+
+        Character topConsonant = entries.stream()
+                .filter(entry -> !this.isVowel(entry.getKey()))
+                .findFirst()
+                .orElseThrow()
+                .getKey();
+
+        Assertions.assertEquals(topVowel, 'e');
+        Assertions.assertEquals(topConsonant, 't');
+    }
+
+    private boolean isVowel(char character) {
+        return switch (character) {
+            case 'a', 'e', 'i', 'o', 'u' -> true;
+            default -> false;
+        };
+    }
 }
