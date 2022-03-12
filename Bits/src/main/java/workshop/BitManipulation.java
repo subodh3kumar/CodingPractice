@@ -12,5 +12,6 @@ public class BitManipulation {
         System.out.println("decimal value: " + num);
         System.out.println("hexadecimal value: " + Integer.toHexString(num));
         System.out.println("octal value: " + Integer.toOctalString(num));
+        System.out.println("binary value: " + Integer.toBinaryString(num));
     }
 }
