@@ -1,4 +1,4 @@
-package workshop;
+package workshop.map;
 
 import java.util.ArrayList;
 import java.util.HashMap;

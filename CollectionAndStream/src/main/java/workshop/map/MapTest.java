@@ -1,4 +1,4 @@
-package workshop;
+package workshop.map;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-class MapTest {
+public class MapTest {
 
     @Test
-    void testMapDuplicateKey() {
+    public void testMapDuplicateKey() {
         Map<String, Integer> map = new HashMap<>();
 
         map.put("ONE", 1);

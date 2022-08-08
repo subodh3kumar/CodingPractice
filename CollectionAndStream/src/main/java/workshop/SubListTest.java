@@ -4,15 +4,17 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 
-class SubListTest {
+public class SubListTest {
 
     @Test
     @DisplayName("test sublist")
-    void testSubList() {
+    public void testSubList() {
         List<String> list = new ArrayList<>();
         list.add("a");
         list.add("b");
@@ -28,7 +30,7 @@ class SubListTest {
 
     @Test
     @DisplayName("test smaller list")
-    void createSubListUsingTraditionally() {
+    public void createSubListUsingTraditionally() {
         List<Integer> integers = getIntegerList();
         List<Integer> temp = new ArrayList<>();
 
@@ -48,6 +50,26 @@ class SubListTest {
         if (!temp.isEmpty()) {
             display(temp);
         }
+    }
+
+    @Test
+    public void testRandomIntList() {
+        List<Integer> integers = new SecureRandom()
+                .ints(10, 10, 50)
+                .boxed()
+                .toList();
+        integers.forEach(System.out::println);
+        Assertions.assertEquals(10, integers.size());
+    }
+
+    @Test
+    public void testUniqueRandomInt() {
+        List<Integer> integers = ThreadLocalRandom.current()
+                .ints(10, 10, 50)
+                .boxed()
+                .toList();
+        integers.forEach(System.out::println);
+        Assertions.assertEquals(10, integers.size());
     }
 
     private void display(List<Integer> list) {

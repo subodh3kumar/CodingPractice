@@ -1,4 +1,4 @@
-package workshop;
+package workshop.map;
 
 import org.junit.jupiter.api.Test;
 

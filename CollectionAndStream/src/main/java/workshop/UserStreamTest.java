@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserStreamTest {
-
-
     @Test
     public void displayUsersAgeGT30() {
         // Iterate persons
@@ -43,7 +41,6 @@ public class UserStreamTest {
     }
 
     record User(String name, int age) {
-
     }
 
     private List<User> users() {
