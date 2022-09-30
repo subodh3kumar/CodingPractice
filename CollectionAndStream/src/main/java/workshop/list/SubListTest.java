@@ -1,4 +1,4 @@
-package workshop;
+package workshop.list;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

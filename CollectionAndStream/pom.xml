@@ -10,9 +10,10 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <junit.version>5.8.2</junit.version>
+        <junit.version>5.9.0</junit.version>
         <assertj.version>3.23.1</assertj.version>
-        <eclipse-collections.version>11.0.0</eclipse-collections.version>
+        <eclipse-collections.version>11.1.0</eclipse-collections.version>
+        <guava.version>31.1-jre</guava.version>
     </properties>
 
     <dependencies>
@@ -26,6 +27,12 @@
             <groupId>org.eclipse.collections</groupId>
             <artifactId>eclipse-collections</artifactId>
             <version>${eclipse-collections.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
 
         <dependency>

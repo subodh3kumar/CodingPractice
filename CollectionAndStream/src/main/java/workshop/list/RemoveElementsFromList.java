@@ -1,20 +1,23 @@
-package workshop;
+package workshop.list;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class RemoveElements {
+public class RemoveElementsFromList {
 
     public static void main(String[] args) {
         List<User> users = new LinkedList<>(getUserList());
+
         System.out.println("users before deletion");
         users.forEach(System.out::println);
         System.out.println("users size: " + users.size());
+
         System.out.println("\nusers after deletion");
         List<Integer> idsToBeRemove = getIds();
         remove(users, idsToBeRemove);
+
         users.forEach(System.out::println);
         System.out.println("users size: " + users.size());
     }
