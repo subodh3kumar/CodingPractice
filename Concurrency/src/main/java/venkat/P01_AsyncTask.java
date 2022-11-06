@@ -8,7 +8,7 @@ public class P01_AsyncTask {
         System.out.println("main(): " + Thread.currentThread());
         CompletableFuture<Integer> cf = create();
         Thread.sleep(1000);
-        cf.thenAccept(data -> printIt(data));
+        cf.thenAccept(P01_AsyncTask::printIt);
         Thread.sleep(1000);
     }
 
@@ -19,7 +19,7 @@ public class P01_AsyncTask {
 
     private static CompletableFuture<Integer> create() {
         System.out.println("create(): " + Thread.currentThread());
-        return CompletableFuture.supplyAsync(() -> compute());
+        return CompletableFuture.supplyAsync(P01_AsyncTask::compute);
     }
 
     private static int compute() {

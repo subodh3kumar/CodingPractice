@@ -19,7 +19,7 @@ public class P07_Timeout {
     }
 
     private static void process(CompletableFuture<Integer> future) {
-        future.exceptionally(throwable -> handle(throwable))
+        future.exceptionally(P07_Timeout::handle)
                 .thenApply(data -> data * 2)
                 .thenApply(data -> data + 1)
                 .thenAccept(System.out::println);

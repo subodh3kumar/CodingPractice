@@ -12,7 +12,7 @@ public class P04_Exceptionally {
     }
 
     private static void process(CompletableFuture<Integer> future) {
-        future.exceptionally(throwable -> handle(throwable))
+        future.exceptionally(P04_Exceptionally::handle)
                 .thenApply(data -> data * 2)
                 .thenApply(data -> data + 1)
                 .thenAccept(System.out::println);

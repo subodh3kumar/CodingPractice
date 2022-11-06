@@ -9,7 +9,7 @@ public class P02_AsyncTaskForkJoinPool {
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println("main(): " + Thread.currentThread());
-        create().thenAccept(data -> printIt(data));
+        create().thenAccept(P02_AsyncTaskForkJoinPool::printIt);
     }
 
     private static void printIt(Integer data) {
@@ -19,7 +19,7 @@ public class P02_AsyncTaskForkJoinPool {
 
     private static CompletableFuture<Integer> create() {
         System.out.println("create(): " + Thread.currentThread());
-        return CompletableFuture.supplyAsync(() -> compute(), forkJoinPool);
+        return CompletableFuture.supplyAsync(P02_AsyncTaskForkJoinPool::compute, forkJoinPool);
     }
 
     private static int compute() {

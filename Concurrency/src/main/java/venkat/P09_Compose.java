@@ -5,7 +5,7 @@ import java.util.concurrent.CompletableFuture;
 public class P09_Compose {
 
     public static void main(String[] args) {
-        create(2).thenCompose(data -> create(data))
+        create(2).thenCompose(P09_Compose::create)
                 .thenAccept(System.out::println);
     }
 
