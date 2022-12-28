@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<users>
+    <user id="1001">
+        <firstname>subodh</firstname>
+        <lastname>kumar</lastname>
+        <nickname>munna</nickname>
+        <salary currency="INR">1000</salary>
+    </user>
+    <user id="1002">
+        <firstname>juli</firstname>
+        <lastname>kumari</lastname>
+        <nickname>juli</nickname>
+        <salary currency="INR">500</salary>
+    </user>
+</users>
