@@ -13,15 +13,19 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class ReadXMLFile {
+public class ReadXmlFile {
 
     private static final String FILE_NAME = "/users.xml";
 
     public static void main(String[] args) {
+        ReadXmlFile xmlReader = new ReadXmlFile();
+        xmlReader.readXmlV1();
+    }
 
+    private void readXmlV1() {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
-        try (InputStream inputStream = ReadXMLFile.class.getResourceAsStream(FILE_NAME)) {
+        try (InputStream inputStream = ReadXmlFile.class.getResourceAsStream(FILE_NAME)) {
             factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
