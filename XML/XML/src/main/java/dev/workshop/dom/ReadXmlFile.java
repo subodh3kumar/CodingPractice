@@ -12,35 +12,75 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ReadXmlFile {
 
+    private static final Logger logger = Logger.getLogger(ReadXmlFile.class.getName());
     private static final String FILE_NAME = "/users.xml";
 
     public static void main(String[] args) {
         ReadXmlFile xmlReader = new ReadXmlFile();
-        xmlReader.readXmlV1();
+        //xmlReader.readXmlV1();
+        xmlReader.readXmlV2();
     }
 
-    private void readXmlV1() {
+    private void readXmlV2() {
+        logger.log(Level.INFO, "readXmlV2() method start");
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
-        try (InputStream inputStream = ReadXmlFile.class.getResourceAsStream(FILE_NAME)) {
+        try (InputStream inputStream = this.getClass().getResourceAsStream(FILE_NAME)) {
             factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
             Document document = documentBuilder.parse(inputStream);
             document.getDocumentElement().normalize();
 
-            System.out.println("Root element: " + document.getDocumentElement().getNodeName());
-            System.out.println("---------");
+            Element element = document.getDocumentElement();
+            String nodeName = element.getNodeName();
+            logger.log(Level.INFO, "node name: {0}", nodeName);
+
+            NodeList usersNodeList = element.getElementsByTagName("users");
+            logger.log(Level.INFO, "userNodeListLength: {0}", usersNodeList.getLength());
+
+            NodeList childNodes = element.getChildNodes();
+            for (int i = 0; i < childNodes.getLength(); i++) {
+                Node item = childNodes.item(i);
+                if (item instanceof Element element1) {
+                    Element element11 = element1;
+                    element11.normalize();
+                    NodeList lastname = element11.getElementsByTagName("lastname");
+                    logger.log(Level.INFO, "--->" + lastname.toString());
+                }
+                String childNodeName = item.getNodeName();
+                logger.log(Level.INFO, "child node: {0}", childNodeName.);
+            }
+        } catch (IOException | ParserConfigurationException | SAXException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void readXmlV1() {
+        logger.log(Level.INFO, "readXmlV1() method start");
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+        try (InputStream inputStream = this.getClass().getResourceAsStream(FILE_NAME)) {
+            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+
+            DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+            Document document = documentBuilder.parse(inputStream);
+            document.getDocumentElement().normalize();
+
+            logger.log(Level.INFO, "Root element: " + document.getDocumentElement().getNodeName());
+            logger.log(Level.INFO, "---------");
 
             NodeList userNode = document.getElementsByTagName("user");
 
             for (int i = 0; i < userNode.getLength(); i++) {
                 Node node = userNode.item(i);
-
-                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                short nodeType = node.getNodeType();
+                if (nodeType == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
                     String id = element.getAttribute("id");
                     String firstname = element.getElementsByTagName("firstname").item(0).getTextContent();
@@ -52,12 +92,12 @@ public class ReadXmlFile {
 
                     String currency = salaryNodeList.item(0).getAttributes().getNamedItem("currency").getTextContent();
 
-                    System.out.println("current element: " + node.getNodeName());
-                    System.out.println("user id: " + id);
-                    System.out.println("first name: " + firstname);
-                    System.out.println("last name: " + lastname);
-                    System.out.println("nickname: " + nickname);
-                    System.out.printf("salary [currency]: %,.2f [%s]%n%n", Float.parseFloat(salary), currency);
+                    logger.log(Level.INFO, "current element: " + node.getNodeName());
+                    logger.log(Level.INFO, "user id: " + id);
+                    logger.log(Level.INFO, "first name: " + firstname);
+                    logger.log(Level.INFO, "last name: " + lastname);
+                    logger.log(Level.INFO, "nickname: " + nickname);
+                    logger.log(Level.INFO, "salary [currency]: {0} [{1}]", new Object[]{salary, currency});
                 }
             }
         } catch (ParserConfigurationException | SAXException | IOException e) {

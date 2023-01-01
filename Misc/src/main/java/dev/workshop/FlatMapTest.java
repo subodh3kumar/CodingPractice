@@ -1,4 +1,4 @@
-package org.example;
+package dev.workshop;
 
 import java.util.stream.Stream;
 
