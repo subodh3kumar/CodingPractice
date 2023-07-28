@@ -1,4 +1,4 @@
-package dev.workshop;
+package workshop.annotation;
 
 import java.util.stream.Stream;
 
