@@ -1,4 +1,4 @@
-package workshop.mapstruct;
+package workshop;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

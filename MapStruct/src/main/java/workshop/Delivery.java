@@ -1,4 +1,4 @@
-package workshop.mapstruct;
+package workshop;
 
 import java.time.LocalDate;
 import java.util.Objects;

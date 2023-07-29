@@ -1,4 +1,4 @@
-package workshop.mapstruct;
+package workshop;
 
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -49,5 +49,4 @@ class DeliveryMapperTest {
             soft.assertThat(entity.getCountry()).isEqualTo(dto.country());
         });
     }
-
 }
