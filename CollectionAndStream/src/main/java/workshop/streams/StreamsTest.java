@@ -16,7 +16,7 @@ public class StreamsTest {
                 .max(Comparator.comparing(String::length))
                 .get();
 
-        countries.
+        //countries.
 
         System.out.println(country);
 
