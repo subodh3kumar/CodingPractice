@@ -48,7 +48,6 @@ public class ListTest {
     }
 
     @Test
-    //Disabled
     @DisplayName("test list merge")
     public void mergeList() {
         var list1 = List.of(1, 2);
