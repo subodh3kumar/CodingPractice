@@ -86,7 +86,5 @@ public class CsvWriter {
         } catch (SQLException e) {
             log.error("ERROR:", e);
         }
-
-
     }
 }
