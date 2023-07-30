@@ -1,4 +1,4 @@
-package workshop;
+package workshop.misc;
 
 import java.io.IOException;
 import java.nio.file.Files;

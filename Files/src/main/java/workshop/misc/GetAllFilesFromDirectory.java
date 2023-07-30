@@ -1,4 +1,4 @@
-package workshop;
+package workshop.misc;
 
 import java.io.File;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class GetAllFilesFromDirectory {
 
-    private static final String PATH = "C:\\Development\\Workspace\\IDEA\\CodingPractice\\Files\\src\\main\\resources\\directory\\";
+    private static final String PATH = "C:/Development/Workspace/Idea/CodingPractice/Files/src/main/resources/directory/";
 
     public static void main(String[] args) {
         List<File> files = getAllFiles(PATH, "HELLO");
