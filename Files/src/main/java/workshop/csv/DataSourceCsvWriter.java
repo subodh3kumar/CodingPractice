@@ -5,24 +5,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import workshop.util.JdbcUtil;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class CsvWriter {
+public class DataSourceCsvWriter {
 
-    private static final Logger log = LoggerFactory.getLogger(CsvWriter.class);
+    private static final Logger log = LoggerFactory.getLogger(DataSourceCsvWriter.class);
 
     public static void main(String[] args) {
+        long startTime = System.currentTimeMillis();
+
         Connection connection = JdbcUtil.getConnection();
 
-        final String sql = "SELECT * FROM EMP";
-        StringBuilder dataStringBuilder = new StringBuilder();
+        final String sql = "SELECT * FROM CUSTOMERS";
+        List<String> dataList = new ArrayList<>();
 
         try {
             DatabaseMetaData databaseMetaData = connection.getMetaData();
-            ResultSet columnResultSet = databaseMetaData.getColumns(null, databaseMetaData.getUserName(), "EMP", null);
+            ResultSet columnResultSet = databaseMetaData.getColumns(null, databaseMetaData.getUserName(), "CUSTOMERS", null);
 
             List<String> columns = new ArrayList<>();
             StringBuilder columnStringBuilder = new StringBuilder();
@@ -30,17 +36,14 @@ public class CsvWriter {
             while (columnResultSet.next()) {
                 String columnName = columnResultSet.getString("COLUMN_NAME");
                 String columnType = columnResultSet.getString("TYPE_NAME");
-                String dataType = columnResultSet.getString("DATA_TYPE");
-                log.info("column name: {}, column type: {}. data type: {}", columnType, columnType, dataType);
                 columns.add(columnName + "|" + columnType);
-                columnStringBuilder.append(columnName);
+                columnStringBuilder.append("\"").append(columnName).append("\"");
                 columnStringBuilder.append(",");
 
             }
             String rowHeader = columnStringBuilder.substring(0, columnStringBuilder.length() - 1);
-            dataStringBuilder.append(rowHeader);
-            dataStringBuilder.append(System.lineSeparator());
-            columns.forEach(log::info);
+            log.info("Header: {}", rowHeader);
+            dataList.add(rowHeader);
 
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
@@ -56,14 +59,11 @@ public class CsvWriter {
                     String columnType = columnNameType[1];
 
                     if (Objects.equals(columnType, "NUMBER")) {
-                        int precision = resultSetMetaData.getPrecision(2);
                         int scale = resultSetMetaData.getScale(2);
                         columnType = "DOUBLE";
                         if (scale == 0) {
                             columnType = "INTEGER";
                         }
-                        log.info("column precision: {}", precision);
-                        log.info("column scale: {}", scale);
                     }
 
                     String value = switch (columnType) {
@@ -74,17 +74,27 @@ public class CsvWriter {
                         default -> "";
                     };
 
-                    rowStringBuilder.append(value);
+                    rowStringBuilder.append("\"").append(value).append("\"");
                     rowStringBuilder.append(",");
                 }
                 String row = rowStringBuilder.substring(0, rowStringBuilder.length() - 1);
-                dataStringBuilder.append(row);
-                dataStringBuilder.append(System.lineSeparator());
+                dataList.add(row);
             }
-            log.info(dataStringBuilder.toString());
+            log.info("total lines: {}", dataList.size());
 
-        } catch (SQLException e) {
+            Path path = Path.of("src/main/resources/output/data.csv");
+
+            try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+                for (String row : dataList) {
+                    writer.write(row);
+                    writer.write(System.lineSeparator());
+                }
+                writer.flush();
+            }
+        } catch (SQLException | IOException e) {
             log.error("ERROR:", e);
         }
+        long endTime = System.currentTimeMillis();
+        log.info("total time for execution: {}", (endTime - startTime) + " ms");
     }
 }
