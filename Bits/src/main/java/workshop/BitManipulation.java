@@ -14,7 +14,6 @@ public class BitManipulation {
         System.out.println("octal value: " + Long.toOctalString(num));
         System.out.println("binary value: " + Long.toBinaryString(num));
 
-
         System.out.println("binary (num & 1): " + (num & 1));
     }
 }
