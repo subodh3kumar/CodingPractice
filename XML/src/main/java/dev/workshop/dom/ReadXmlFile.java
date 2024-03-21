@@ -54,7 +54,7 @@ public class ReadXmlFile {
                     logger.log(Level.INFO, "--->" + lastname.toString());
                 }
                 String childNodeName = item.getNodeName();
-                logger.log(Level.INFO, "child node: {0}", childNodeName.);
+                logger.log(Level.INFO, "child node: {0}", childNodeName);
             }
         } catch (IOException | ParserConfigurationException | SAXException e) {
             throw new RuntimeException(e);
