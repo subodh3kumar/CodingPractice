@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<art:articles>
+<art:articles xmlns:art="ns1" xmlns:art="ns2">
     <article>
         <title>Parsing an XML File Using SAX Parser</title>
         <content>SAX Parser's Lorem ipsum</content>
