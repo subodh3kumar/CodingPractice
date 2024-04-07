@@ -3,14 +3,14 @@ package workshop.recursive;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-public class Permutation {
+public class PermutationTest {
 
     private final String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     @Test
     //@Disabled
     public void perm1() {
-        perm1(alphabet.substring(0, 3));
+        perm1(alphabet.substring(0, 2));
         //perm1("1122");
     }
 
