@@ -5,11 +5,12 @@ import java.util.concurrent.CompletableFuture;
 public class P01_AsyncTask {
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println("main(): " + Thread.currentThread());
+        System.out.println("main(1): " + Thread.currentThread());
         CompletableFuture<Integer> cf = create();
         Thread.sleep(1000);
         cf.thenAccept(P01_AsyncTask::printIt);
         Thread.sleep(1000);
+        System.out.println("main(2): " + Thread.currentThread());
     }
 
     private static void printIt(Integer data) {
