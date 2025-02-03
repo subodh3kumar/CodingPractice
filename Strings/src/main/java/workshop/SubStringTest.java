@@ -18,11 +18,11 @@ public class SubStringTest {
     }
 
     @Test
-    @Disabled
+    //@Disabled
     public void substring2() {
         String str = "abc";
         for (int i = 0; i < str.length(); i++) {
-            System.out.println("|" + str.substring(0, i) + "|");
+            System.out.println(i + "--> " + "|" + str.substring(0, i) + "|");
         }
     }
 

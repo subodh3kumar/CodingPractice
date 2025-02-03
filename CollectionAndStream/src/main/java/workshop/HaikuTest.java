@@ -142,8 +142,8 @@ public class HaikuTest {
         char topVowel = charIntPairs.detect(pair -> this.isVowel(pair.getOne())).getOne();
         char topConsonant = charIntPairs.detect(pair -> !isVowel(pair.getOne())).getOne();
 
-        Assertions.assertEquals(topVowel, 'e');
-        Assertions.assertEquals(topConsonant, 't');
+        Assertions.assertEquals('e', topVowel);
+        Assertions.assertEquals('t', topConsonant);
     }
 
     @Test
@@ -170,8 +170,8 @@ public class HaikuTest {
                 .orElseThrow()
                 .getKey();
 
-        Assertions.assertEquals(topVowel, 'e');
-        Assertions.assertEquals(topConsonant, 't');
+        Assertions.assertEquals('e', topVowel);
+        Assertions.assertEquals('t', topConsonant);
     }
 
     private boolean isVowel(char character) {
