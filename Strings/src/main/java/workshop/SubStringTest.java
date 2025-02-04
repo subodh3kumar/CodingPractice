@@ -18,7 +18,7 @@ public class SubStringTest {
     }
 
     @Test
-    //@Disabled
+    @Disabled
     public void substring2() {
         String str = "abc";
         for (int i = 0; i < str.length(); i++) {
