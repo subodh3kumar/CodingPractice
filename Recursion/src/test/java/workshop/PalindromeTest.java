@@ -15,8 +15,16 @@ public class PalindromeTest {
 
     @Test
     public void testPalindrome() {
-        int palindrome = obj.palindrome(5);
-        System.out.println("palindrome value: " + palindrome);
-        Assertions.assertEquals(8, palindrome);
+        boolean isPalindrome = obj.palindrome("121");
+        Assertions.assertTrue(isPalindrome);
+
+        isPalindrome = obj.palindrome("1211");
+        Assertions.assertFalse(isPalindrome);
+
+        isPalindrome = obj.palindrome("radar");
+        Assertions.assertTrue(isPalindrome);
+
+        isPalindrome = obj.palindrome("12321");
+        Assertions.assertTrue(isPalindrome);
     }
 }

@@ -2,10 +2,18 @@ package workshop;
 
 public class Palindrome {
 
-    public int palindrome(int number) {
-        if (number <= 1) {
-            return 1;
+    public boolean palindrome(String str) {
+        if (str == null || str.isEmpty()) {
+            throw new NullPointerException("empty string");
         }
-        return palindrome(number - 1) + palindrome(number - 2);
+        int length = str.length();
+        boolean isPalindrome = true;
+        for (int i = 0; i < length / 2; i++) {
+            if (!(str.charAt(i) == str.charAt(length - 1 - i))) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        return isPalindrome;
     }
 }
