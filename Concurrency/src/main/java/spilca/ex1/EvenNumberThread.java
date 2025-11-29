@@ -15,7 +15,7 @@ public class EvenNumberThread extends Thread {
             try {
                 Thread.sleep(number);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
     }

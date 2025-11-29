@@ -12,6 +12,11 @@ public class CompletableFutureDemo_1 {
     }
 
     static String message() {
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return "Hello World";
     }
 
