@@ -1,5 +1,6 @@
 package workshop;
 
+import dev.subodh.misc.User;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

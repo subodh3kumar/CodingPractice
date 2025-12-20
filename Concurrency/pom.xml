@@ -3,15 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>workshop</groupId>
+    <groupId>dev.subodh</groupId>
     <artifactId>Concurrency</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
-        <junit.version>5.13.4</junit.version>
-        <assertj.version>3.27.4</assertj.version>
+        <junit.version>6.0.1</junit.version>
+        <assertj.version>3.27.6</assertj.version>
     </properties>
 
     <dependencies>
