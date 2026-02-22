@@ -5,7 +5,7 @@ public class PrintInSequence {
     static void main() {
         Thread t1 = new Thread(() -> {
             for (int i = 1; i <= 26; i++) {
-                System.out.println("Thread 1: " + i);
+                IO.println("Thread 1: " + i);
                 synchronized (PrintInSequence.class) {
                     PrintInSequence.class.notify();
                     try {
@@ -22,7 +22,7 @@ public class PrintInSequence {
         Thread t2 = new Thread(() -> {
             for (int i = 'A'; i <= 'Z'; i++) {
                 synchronized (PrintInSequence.class) {
-                    System.out.println("Thread 2: " + (char) i);
+                    IO.println("Thread 2: " + (char) i);
                     PrintInSequence.class.notify();
                     try {
                         if (i < 'Z') {

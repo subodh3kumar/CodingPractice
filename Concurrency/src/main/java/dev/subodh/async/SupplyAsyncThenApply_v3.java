@@ -10,16 +10,16 @@ public class SupplyAsyncThenApply_v3 {
                 .thenApply(SupplyAsyncThenApply_v3::process);
 
         String result = valueCompletableFuture.get();
-        System.out.println(result);
+        IO.println(result);
     }
 
     private static String process(String data) {
-        System.out.println("process: " + Thread.currentThread().getName());
+        IO.println("process: " + Thread.currentThread().getName());
         return data + " processed";
     }
 
     private static String getById(int id) {
-        System.out.println("getById: " + Thread.currentThread().getName());
+        IO.println("getById: " + Thread.currentThread().getName());
         return "id: " + id;
     }
 }

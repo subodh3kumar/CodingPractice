@@ -15,7 +15,7 @@ public class SupplyAsyncExceptionally_v2 {
                     .exceptionally(Throwable::getLocalizedMessage);
 
             String result = valueFuture.get();
-            System.out.println("value: " + result);
+            IO.println("value: " + result);
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }

@@ -13,16 +13,16 @@ public class SupplyAsyncWhenComplete_v5 {
                         System.err.println(error);
                     }
                 });
-        System.out.println(completableFuture.get());
+        IO.println(completableFuture.get());
     }
 
     private static void process(String data) {
-        System.out.println("process: " + Thread.currentThread().getName());
-        System.out.println("process: " + data + " process");
+        IO.println("process: " + Thread.currentThread().getName());
+        IO.println("process: " + data + " process");
     }
 
     private static String getById(int value) {
-        System.out.println("getById: " + Thread.currentThread().getName());
+        IO.println("getById: " + Thread.currentThread().getName());
         return "id: " + value;
     }
 }

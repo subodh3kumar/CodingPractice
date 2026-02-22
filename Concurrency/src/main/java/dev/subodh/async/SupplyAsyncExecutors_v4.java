@@ -14,19 +14,19 @@ public class SupplyAsyncExecutors_v4 {
             ).thenApply(SupplyAsyncExecutors_v4::process);
 
             String msg = completableFuture.get();
-            System.out.println(msg);
+            IO.println(msg);
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
     private static String process(String msg) {
-        System.out.println("process: " + Thread.currentThread().getName());
+        IO.println("process: " + Thread.currentThread().getName());
         return msg + " process";
     }
 
     private static String getId(int num) {
-        System.out.println("getId: " + Thread.currentThread().getName());
+        IO.println("getId: " + Thread.currentThread().getName());
         return "id " + num;
     }
 }

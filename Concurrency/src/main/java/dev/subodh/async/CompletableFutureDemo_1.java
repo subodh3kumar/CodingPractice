@@ -25,6 +25,6 @@ public class CompletableFutureDemo_1 {
     }
 
     static void print(String msg) {
-        System.out.println(msg);
+        IO.println(msg);
     }
 }

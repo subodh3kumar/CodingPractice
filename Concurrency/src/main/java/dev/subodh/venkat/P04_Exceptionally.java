@@ -19,7 +19,7 @@ public class P04_Exceptionally {
     }
 
     private static int handle(Throwable throwable) {
-        System.out.println("ERROR: " + throwable);
+        IO.println("ERROR: " + throwable);
         //return 100;
         throw new RuntimeException("This is beyond any repair");
     }

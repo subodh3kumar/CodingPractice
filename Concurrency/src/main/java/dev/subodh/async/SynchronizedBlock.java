@@ -27,7 +27,7 @@ public class SynchronizedBlock {
     public static void main(String[] args) {
         System.setProperty("jdk.virtualThreadScheduler.parallelism", "1");
 
-        System.out.println("Running with java version: " + System.getProperty("java.version"));
+        IO.println("Running with java version: " + System.getProperty("java.version"));
         System.out.printf("Launching %,d virtual threads%n", NUM_THREADS);
         System.out.printf("Each thread does cpu work for %,d iterations, then acquires lock and blocked for %d ms%n", CPU_WORK_ITERATION, BLOCKING_TIME_MS);
 
@@ -61,7 +61,7 @@ public class SynchronizedBlock {
                 System.out.printf("All %,d tasks completed.\n", completedTasks.get());
                 System.out.printf("Total execution time: %.3f seconds\n", duration.toMillis() / 1000.0);
             } else {
-                System.out.println("Timed out after5 minutes");
+                IO.println("Timed out after5 minutes");
             }
         } catch (Exception e) {
             throw new RuntimeException(e);

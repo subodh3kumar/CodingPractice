@@ -14,7 +14,7 @@ public class ConcurrentMapTest {
     @Test
     @DisplayName("not thread safe")
     public void testCharOccurrenceMap() {
-        System.out.println("not thread safe");
+        IO.println("not thread safe");
         Map<Character, LongAdder> occurrences = new Hashtable<>();
         String str = "abcd abcd abcd";
 
@@ -26,19 +26,19 @@ public class ConcurrentMapTest {
             longAdder.increment();
             occurrences.put(character, longAdder);
         }
-        System.out.println(occurrences);
+        IO.println(occurrences);
     }
 
     @Test
     @DisplayName("thread safe")
     public void testCharOccurrenceConcurrentMap() {
-        System.out.println("thread safe");
+        IO.println("thread safe");
         ConcurrentMap<Character, LongAdder> occurrences = new ConcurrentHashMap<>();
         String str = "abcd abcd abcd";
 
         for (char character: str.toCharArray()) {
             occurrences.computeIfAbsent(character, ch -> new LongAdder()).increment();
         }
-        System.out.println(occurrences);
+        IO.println(occurrences);
     }
 }

@@ -11,6 +11,6 @@ public class LongAdderTest {
         Runnable task = counter::increment;
         task.run();
 
-        System.out.println("counter: " + counter);
+        IO.println("counter: " + counter);
     }
 }

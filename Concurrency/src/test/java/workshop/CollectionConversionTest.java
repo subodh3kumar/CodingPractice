@@ -21,10 +21,10 @@ public class CollectionConversionTest {
         userMap.put(1006, new User(1006, "Akash", 20));
         userMap.put(1007, new User(1007, "Bindiya", 18));
 
-        System.out.println("user map -->");
-        userMap.forEach((k, v) -> System.out.println("key: " + k + ", value: " + v.toString()));
+        IO.println("user map -->");
+        userMap.forEach((k, v) -> IO.println("key: " + k + ", value: " + v.toString()));
 
-        System.out.println("\nuser set -->");
+        IO.println("\nuser set -->");
         Set<User> users = new HashSet<>(userMap.values());
         users.forEach(System.out::println);
     }

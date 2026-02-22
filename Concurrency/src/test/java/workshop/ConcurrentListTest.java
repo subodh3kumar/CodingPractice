@@ -18,7 +18,7 @@ public class ConcurrentListTest {
         list.add("four");
 
         for (String str: list) {
-            System.out.println(str);
+            IO.println(str);
         }
     }
 }

@@ -19,6 +19,6 @@ public class DBRunnableMain {
             e.printStackTrace();
         }
 
-        System.out.println("processing...");
+        IO.println("processing...");
     }
 }

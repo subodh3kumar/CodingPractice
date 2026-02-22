@@ -16,7 +16,7 @@ public class TimerTaskTest {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("|");
+                IO.println("|");
             }
         };
         timer.scheduleAtFixedRate(task, 0, 2000);
@@ -25,7 +25,7 @@ public class TimerTaskTest {
     @Test
     public void testSingleThreadScheduledExecutor() {
         ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        Runnable task = () -> System.out.println(".");
+        Runnable task = () -> IO.println(".");
         scheduledExecutorService.scheduleAtFixedRate(task, 0, 2, TimeUnit.SECONDS);
     }
 }

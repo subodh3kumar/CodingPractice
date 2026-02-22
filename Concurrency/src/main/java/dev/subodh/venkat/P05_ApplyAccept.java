@@ -11,7 +11,7 @@ public class P05_ApplyAccept {
     }
 
     private static void printIt(Integer data) {
-        System.out.println(data);
+        IO.println(data);
     }
 
     private static CompletableFuture<Integer> create() {

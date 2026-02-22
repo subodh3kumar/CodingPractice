@@ -13,7 +13,7 @@ public class SupplyAsyncThenCombine_v1 {
         CompletableFuture<String> helloWorld = hello.thenCombine(world, (msg1, msg2) -> msg1 + " " + msg2);
 
         try {
-            System.out.println(helloWorld.get());
+            IO.println(helloWorld.get());
         } catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
         }

@@ -14,8 +14,8 @@ public class SupplyAsyncStream_v6 {
                 .map(cf -> cf.thenApply(SupplyAsyncStream_v6::process))
                 .forEach(cf -> {
                     try {
-                        System.out.println(cf.get());
-                        System.out.println("------------");
+                        IO.println(cf.get());
+                        IO.println("------------");
                     } catch (InterruptedException | ExecutionException e) {
                         throw new RuntimeException(e);
                     }
@@ -24,12 +24,12 @@ public class SupplyAsyncStream_v6 {
     }
 
     private static String process(String data) {
-        System.out.println("process " + Thread.currentThread().getName());
+        IO.println("process " + Thread.currentThread().getName());
         return data + " process";
     }
 
     private static String getId(Integer num) {
-        System.out.println("getId: " + Thread.currentThread().getName());
+        IO.println("getId: " + Thread.currentThread().getName());
         return "id " + num;
     }
 }

@@ -26,7 +26,7 @@ public class P07_Timeout {
     }
 
     private static int handle(Throwable throwable) {
-        System.out.println("ERROR: " + throwable);
+        IO.println("ERROR: " + throwable);
         //return 100;
         throw new RuntimeException("This is beyond any repair");
     }
